@@ -14,7 +14,7 @@ const (
 	MULTILINE
 )
 
-func PrettySPrint(message trace.Message, flavour ...Flavour) string {
+func PrettySprintMessage(message trace.Message, flavour ...Flavour) string {
 	if len(flavour) == 0 {
 		flavour = append(flavour, ONELINE)
 	}
@@ -31,8 +31,8 @@ func PrettySPrint(message trace.Message, flavour ...Flavour) string {
 	return out
 }
 
-func PrettyPrint(message trace.Message, flavour ...Flavour) {
-	fmt.Print(PrettySPrint(message, flavour...))
+func PrettyPrintMessage(message trace.Message, flavour ...Flavour) {
+	fmt.Print(PrettySprintMessage(message, flavour...))
 }
 
 // flavours

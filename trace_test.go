@@ -43,7 +43,7 @@ func TestTraceNormal(t *testing.T) {
 	messages := tracer.Messages()
 	assert.Equal(t, len(messages), 3)
 	for _, message := range messages {
-		printer.PrettyPrint(message, printer.MULTILINE)
+		printer.PrettyPrintMessage(message, printer.MULTILINE)
 	}
 }
 
@@ -89,7 +89,7 @@ func TestTraceWithout(t *testing.T) {
 	messages := tracer.Messages()
 	assert.Equal(t, len(messages), 1)
 	for _, message := range messages {
-		printer.PrettyPrint(message, printer.MULTILINE)
+		printer.PrettyPrintMessage(message, printer.MULTILINE)
 	}
 }
 

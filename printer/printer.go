@@ -53,3 +53,26 @@ func NewTracePrinter(
 		return nil
 	}
 }
+
+func SprintTrace(
+	tracer trace.Tracer,
+	print_messages bool,
+) string {
+	tracer.Done()
+	walkable, err := tracer.ToWalkable()
+	if err != nil {
+		panic(err)
+	}
+	var out strings.Builder
+	_ = walkable.Walk(NewTracePrinter(&out, print_messages))
+	// i.stdout.Write([]byte(out.String()))
+	return out.String()
+}
+
+func PrintTrace(
+	tracer trace.Tracer,
+	print_messages bool,
+	writer io.Writer,
+) {
+	writer.Write([]byte(SprintTrace(tracer, print_messages)))
+}
